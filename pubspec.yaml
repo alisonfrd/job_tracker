@@ -20,6 +20,7 @@ dependencies:
   drift_flutter: ^0.2.7
   sqlite3_flutter_libs: ^0.5.41
   json_annotation: ^4.9.0
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
