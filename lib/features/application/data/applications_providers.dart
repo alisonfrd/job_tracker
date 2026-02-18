@@ -5,13 +5,13 @@ import 'package:job_tracker/features/application/data/services/applications_loca
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'applications_providers.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 ApplicationsLocalService applicationsLocalService(Ref ref) {
   final db = ref.watch(appDatabaseProvider);
   return ApplicationsLocalService(db);
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 ApplicationsRepository applicationsRepository(Ref ref) {
   final service = ref.watch(applicationsLocalServiceProvider);
   return ApplicationsRepository(service);

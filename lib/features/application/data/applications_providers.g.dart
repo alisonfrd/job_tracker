@@ -26,7 +26,7 @@ final class ApplicationsLocalServiceProvider
         argument: null,
         retry: null,
         name: r'applicationsLocalServiceProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -55,7 +55,7 @@ final class ApplicationsLocalServiceProvider
 }
 
 String _$applicationsLocalServiceHash() =>
-    r'e78fbb048a8c2583434ce9cb167106effa9eec1e';
+    r'47d217a0917f8596145aecab0cf720a0d1c02ab9';
 
 @ProviderFor(applicationsRepository)
 final applicationsRepositoryProvider = ApplicationsRepositoryProvider._();
@@ -74,7 +74,7 @@ final class ApplicationsRepositoryProvider
         argument: null,
         retry: null,
         name: r'applicationsRepositoryProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -103,7 +103,7 @@ final class ApplicationsRepositoryProvider
 }
 
 String _$applicationsRepositoryHash() =>
-    r'54972ff0ee7075f43557d039cc1d8ef67063f593';
+    r'01dfefdf24b9d47265b480609aae3aa9a5bab4a2';
 
 @ProviderFor(applicationsStream)
 final applicationsStreamProvider = ApplicationsStreamProvider._();
