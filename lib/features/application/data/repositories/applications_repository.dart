@@ -3,12 +3,30 @@ import 'package:job_tracker/app/features/applications/domain/application.dart';
 import 'package:job_tracker/core/database/app_database.dart';
 import 'package:job_tracker/features/application/data/services/applications_local_service.dart';
 
+import '../../../../app/features/applications/domain/application.dart';
+
 class ApplicationsRepository {
   ApplicationsRepository(this._service);
   final ApplicationsLocalService _service;
 
   Stream<List<Application>> watchAll() {
     return _service.watchAll().map((rows) => rows.map(_toDomain).toList());
+  }
+
+  Future<Application?> findById(String id) async {
+    final row = await _service.findById(id);
+    return row == null ? null : _toDomain(row);
+  }
+
+  Future<void> save(Application app) async {
+    final now = DateTime.now();
+    final toSave = app.copyWith(updatedAt: now);
+
+    _service.upsert(_toCompanion(toSave));
+  }
+
+  Future<void> remove(String id) async {
+    await _service.deleteById(id);
   }
 
   // ------ Mapping -------
