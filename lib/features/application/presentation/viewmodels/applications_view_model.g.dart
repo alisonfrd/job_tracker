@@ -34,7 +34,7 @@ final class ApplicationsViewModelProvider
 }
 
 String _$applicationsViewModelHash() =>
-    r'c25b23fe3f9b972d08ab2e56d66841fbb7fca1a8';
+    r'f739bb4ac932679ab418ff4b2b057553be4de014';
 
 abstract class _$ApplicationsViewModel
     extends $StreamNotifier<List<Application>> {

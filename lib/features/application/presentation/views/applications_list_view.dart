@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:job_tracker/features/application/presentation/viewmodels/applications_view_model.dart';
 
 class ApplicationsListView extends ConsumerWidget {
@@ -40,14 +41,7 @@ class ApplicationsListView extends ConsumerWidget {
         loading: () => const Center(child: CircularProgressIndicator()),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await ref
-              .read(applicationsViewModelProvider.notifier)
-              .addApplication(
-                companyName: 'Empresa exemplo',
-                positionTitle: 'Flutter developer',
-              );
-        },
+        onPressed: () => context.push('/applications/new'),
         child: const Icon(Icons.add),
       ),
     );

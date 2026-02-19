@@ -41,4 +41,31 @@ class ApplicationsViewModel extends _$ApplicationsViewModel {
 
     await repo.save(app);
   }
+
+  Future<void> createApplication({
+    required String companyName,
+    required String positionTitle,
+    required EmploymentType employmentType,
+    required LocationScope locationScope,
+    int? salaryCents,
+  }) async {
+    final repo = ref.read(applicationsRepositoryProvider);
+
+    final now = DateTime.now();
+    final app = Application(
+      id: const Uuid().v4(),
+      companyName: companyName,
+      positionTitle: positionTitle,
+      status: ApplicationStatus.applied,
+      appliedAt: now,
+      notes: null,
+      salaryCents: salaryCents,
+      employmentType: employmentType,
+      locationScope: locationScope,
+      createdAt: now,
+      updatedAt: now,
+    );
+
+    await repo.save(app);
+  }
 }
