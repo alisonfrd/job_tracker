@@ -1,5 +1,4 @@
 import '../../../../core/database/app_database.dart';
-import 'package:drift/drift.dart';
 
 class ApplicationsLocalService {
   ApplicationsLocalService(this.db);
@@ -15,7 +14,7 @@ class ApplicationsLocalService {
     )..where((t) => t.id.equals(id))).getSingleOrNull();
   }
 
-  Future<void> upsert(ApplicationsTableCompanion row) async {
+  Future<void> upsert(ApplicationTableCompanion row) async {
     await db.into(db.applicationTable).insertOnConflictUpdate(row);
   }
 

@@ -56,7 +56,7 @@ class ApplicationsRepository {
       notes: Value(a.notes),
       salaryCents: Value(a.salaryCents),
       employmentType: Value(a.employmentType.name),
-      locationScope: Value(a.employmentType.name),
+      locationScope: Value(a.locationScope.name),
       createdAt: Value(a.createdAt),
       updatedAt: Value(a.updatedAt),
     );
