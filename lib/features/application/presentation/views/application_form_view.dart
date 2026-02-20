@@ -64,6 +64,7 @@ class _ApplicationFormViewState extends ConsumerState<ApplicationFormView> {
 
   @override
   Widget build(BuildContext context) {
+    final vm = ref.read(applicationsViewModelProvider.notifier);
     return Scaffold(
       appBar: AppBar(title: const Text('Nova candidatura')),
       body: SafeArea(
@@ -158,8 +159,14 @@ class _ApplicationFormViewState extends ConsumerState<ApplicationFormView> {
               ),
               const SizedBox(height: 16),
               FilledButton.icon(
-                onPressed: _submit,
-                icon: const Icon(Icons.check),
+                onPressed: vm.createCommand.state.isRunning ? null : _submit,
+                icon: vm.createCommand.state.isRunning
+                    ? const SizedBox(
+                        height: 18,
+                        width: 18,
+                        child: CircularProgressIndicator(),
+                      )
+                    : const Icon(Icons.check),
                 label: const Text('Salvar'),
               ),
             ],
