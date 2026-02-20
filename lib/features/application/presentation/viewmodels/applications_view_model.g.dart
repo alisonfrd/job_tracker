@@ -13,7 +13,11 @@ part of 'applications_view_model.dart';
 final applicationsViewModelProvider = ApplicationsViewModelProvider._();
 
 final class ApplicationsViewModelProvider
-    extends $StreamNotifierProvider<ApplicationsViewModel, List<Application>> {
+    extends
+        $StreamNotifierProvider<
+          ApplicationsViewModel,
+          ApplicationsScreenState
+        > {
   ApplicationsViewModelProvider._()
     : super(
         from: null,
@@ -34,21 +38,28 @@ final class ApplicationsViewModelProvider
 }
 
 String _$applicationsViewModelHash() =>
-    r'f739bb4ac932679ab418ff4b2b057553be4de014';
+    r'9c9abc907c84529656d23b5d61652c1d91658dba';
 
 abstract class _$ApplicationsViewModel
-    extends $StreamNotifier<List<Application>> {
-  Stream<List<Application>> build();
+    extends $StreamNotifier<ApplicationsScreenState> {
+  Stream<ApplicationsScreenState> build();
   @$mustCallSuper
   @override
   void runBuild() {
     final ref =
-        this.ref as $Ref<AsyncValue<List<Application>>, List<Application>>;
+        this.ref
+            as $Ref<
+              AsyncValue<ApplicationsScreenState>,
+              ApplicationsScreenState
+            >;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<List<Application>>, List<Application>>,
-              AsyncValue<List<Application>>,
+              AnyNotifier<
+                AsyncValue<ApplicationsScreenState>,
+                ApplicationsScreenState
+              >,
+              AsyncValue<ApplicationsScreenState>,
               Object?,
               Object?
             >;

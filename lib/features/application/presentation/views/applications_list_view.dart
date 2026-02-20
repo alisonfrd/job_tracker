@@ -13,7 +13,8 @@ class ApplicationsListView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Candidaturas')),
       body: appsAsync.when(
-        data: (apps) {
+        data: (state) {
+          final apps = state.applications;
           if (apps.isEmpty) {
             return const _EmptyState();
           }

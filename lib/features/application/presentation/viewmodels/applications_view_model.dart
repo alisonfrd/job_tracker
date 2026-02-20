@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:job_tracker/core/database/utils/command.dart';
+import 'package:job_tracker/features/application/presentation/viewmodels/applications_screen_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
@@ -15,13 +16,15 @@ class ApplicationsViewModel extends _$ApplicationsViewModel {
   late final Command createCommand = Command();
 
   @override
-  Stream<List<Application>> build() {
+  Stream<ApplicationsScreenState> build() {
     ref.onDispose(() {
       createCommand.dispose();
     });
     // ViewModel expõe o stream da lista; Riverpod gerencia o AsyncValue na UI.
     final repo = ref.watch(applicationsRepositoryProvider);
-    return repo.watchAll();
+    return repo.watchAll().map(
+      (apps) => ApplicationsScreenState(applications: apps),
+    );
   }
 
   Future<void> addApplication({
