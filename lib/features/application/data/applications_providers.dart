@@ -1,6 +1,8 @@
 import 'package:job_tracker/app/features/applications/domain/application.dart';
 import 'package:job_tracker/core/database/database_providers.dart';
 import 'package:job_tracker/features/application/data/repositories/applications_repository.dart';
+import 'package:job_tracker/features/application/data/repositories/i_applications_repository.dart'
+    show IApplicationsRepository;
 import 'package:job_tracker/features/application/data/services/applications_local_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'applications_providers.g.dart';
@@ -12,7 +14,7 @@ ApplicationsLocalService applicationsLocalService(Ref ref) {
 }
 
 @Riverpod(keepAlive: true)
-ApplicationsRepository applicationsRepository(Ref ref) {
+IApplicationsRepository applicationsRepository(Ref ref) {
   final service = ref.watch(applicationsLocalServiceProvider);
   return ApplicationsRepository(service);
 }

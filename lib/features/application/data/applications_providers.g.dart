@@ -63,11 +63,11 @@ final applicationsRepositoryProvider = ApplicationsRepositoryProvider._();
 final class ApplicationsRepositoryProvider
     extends
         $FunctionalProvider<
-          ApplicationsRepository,
-          ApplicationsRepository,
-          ApplicationsRepository
+          IApplicationsRepository,
+          IApplicationsRepository,
+          IApplicationsRepository
         >
-    with $Provider<ApplicationsRepository> {
+    with $Provider<IApplicationsRepository> {
   ApplicationsRepositoryProvider._()
     : super(
         from: null,
@@ -84,26 +84,26 @@ final class ApplicationsRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<ApplicationsRepository> $createElement(
+  $ProviderElement<IApplicationsRepository> $createElement(
     $ProviderPointer pointer,
   ) => $ProviderElement(pointer);
 
   @override
-  ApplicationsRepository create(Ref ref) {
+  IApplicationsRepository create(Ref ref) {
     return applicationsRepository(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(ApplicationsRepository value) {
+  Override overrideWithValue(IApplicationsRepository value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<ApplicationsRepository>(value),
+      providerOverride: $SyncValueProvider<IApplicationsRepository>(value),
     );
   }
 }
 
 String _$applicationsRepositoryHash() =>
-    r'01dfefdf24b9d47265b480609aae3aa9a5bab4a2';
+    r'8c999bf7584eced10aa1e46312188780b15f9364';
 
 @ProviderFor(applicationsStream)
 final applicationsStreamProvider = ApplicationsStreamProvider._();

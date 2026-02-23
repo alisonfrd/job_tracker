@@ -1,23 +1,26 @@
 import 'package:drift/drift.dart';
 import 'package:job_tracker/app/features/applications/domain/application.dart';
 import 'package:job_tracker/core/database/app_database.dart';
+import 'package:job_tracker/features/application/data/repositories/i_applications_repository.dart'
+    show IApplicationsRepository;
 import 'package:job_tracker/features/application/data/services/applications_local_service.dart';
 
-import '../../../../app/features/applications/domain/application.dart';
-
-class ApplicationsRepository {
+class ApplicationsRepository implements IApplicationsRepository {
   ApplicationsRepository(this._service);
   final ApplicationsLocalService _service;
 
+  @override
   Stream<List<Application>> watchAll() {
     return _service.watchAll().map((rows) => rows.map(_toDomain).toList());
   }
 
+  @override
   Future<Application?> findById(String id) async {
     final row = await _service.findById(id);
     return row == null ? null : _toDomain(row);
   }
 
+  @override
   Future<void> save(Application app) async {
     final now = DateTime.now();
     final toSave = app.copyWith(updatedAt: now);
@@ -25,6 +28,7 @@ class ApplicationsRepository {
     _service.upsert(_toCompanion(toSave));
   }
 
+  @override
   Future<void> remove(String id) async {
     await _service.deleteById(id);
   }
